@@ -15,9 +15,25 @@
 
     <div class="container">
 
-        <div>
+        <div class="bg-info">
 
-            formulario de ingreso de sesion
+            <!-- formulario de ingreso de sesion a la plataforma -->
+            <form action="controller/login/loginController.php" method="post">
+
+                <div id="email">
+                    <label for="">correo electronico</label> <br>
+                    <input type="email" required placeholder="ejemplo@gmail.com" name="email">
+                </div>
+
+                <div id="password">
+                    <label for="" class="mt-3">contrasena</label> <br>
+                    <input type="password" required placeholder="●●●●●●●●" name="pass">
+                </div>
+
+                <button class="btn btn-success mt-3" type="submit">Entrar</button>
+
+
+            </form>
 
         </div>
 
