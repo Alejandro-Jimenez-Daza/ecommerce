@@ -1,13 +1,18 @@
 <?php
-$servername = "localhost";
-$database = "ecommerce";
-$username = "root";
-$password = "";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+
+$host = "localhost";
+$db   = "ecommerce";
+$user = "root";
+$pass = "";
+
+try {
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$db;charset=utf8mb4",
+        $user,
+        $pass
+    );
+
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Error de conexión: " . $e->getMessage());
 }
-// echo "Connected successfully";
-mysqli_close($conn);
