@@ -23,13 +23,13 @@
                 <!-- entrada del correo -->
                 <div id="email">
                     <label for="">correo electronico</label> <br>
-                    <input type="email" required placeholder="ejemplo@gmail.com" name="email">
+                    <input type="email" placeholder="ejemplo@gmail.com" name="email" required>
                 </div>
 
                 <!-- entrada de la clave -->
                 <div id="password">
                     <label for="" class="mt-3">contrasena</label> <br>
-                    <input type="password" required placeholder="●●●●●●●●" name="pass">
+                    <input type="password" placeholder="●●●●●●●●" name="pass" required>
                 </div>
 
                 <button class="btn btn-success mt-3" type="submit">Entrar</button><br>
