@@ -1,6 +1,5 @@
 <?php
 
-
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
     // aca llamo la conexion a la base de datos que viene desde model/conexionBD.php

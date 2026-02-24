@@ -51,26 +51,46 @@
 
         <div class="row">
 
-            <div class="card" style="width: 18rem;">
-                <img src="../resources/static/bix.jpg" class="card-img-top img-fluid" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+            <!-- para empezar a recorrer llamo a la bd -->
 
-            <div class="card" style="width: 18rem;">
-                <img src="../resources/static/psu.webp" class="card-img-top img-fluid" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
+
+            <?php
+            // aca llamo la conexion a la base de datos que viene desde model/conexionBD.php
+            require_once '../model/conexionBD.php';
+
+            try {
+                $sql = "SELECT nombre_producto, descripcion, precio, imagen
+                FROM productos";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+
+                // aca la variable para ir guardando los campos de BD y acceder a ellos luego
+                while ($producto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+                    // guardo en varibales
+                    $nombre_producto = $producto['nombre_producto'];
+                    $descripcion_producto = $producto['descripcion'];
+                    $precio = $producto['precio'];
+                    $url_img = $producto['imagen'];
+            ?>
+                    <div class="card" style="width: 18rem;">
+                        <img src="../resources/static/bix.jpg" class="card-img-top img-fluid" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $nombre_producto ?></h5>
+                            <p class="card-text"><?= $descripcion_producto . '.' ?></p>
+                            <p>$ <?= $precio ?>COP</p>
+                            <a href="#" class="btn btn-primary">Comprar</a>
+                        </div>
+                    </div>
+
+            <?php
+                }
+            } catch (PDOException $e) {
+                echo "Error en la base de datos: " . $e->getMessage();
+            }
+
+            ?>
         </div>
-
-
 
     </div>
 
