@@ -1,0 +1,13 @@
+/* #contenedor-login{
+    width: 800px;
+    height: 200px;
+} */
+
+#input-login{
+    width: 500px;
+}
+
+.container{
+    background-color: orange;
+    padding: 23px;
+}
