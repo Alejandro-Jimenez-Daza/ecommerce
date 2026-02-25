@@ -11,45 +11,22 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid pb-3" id="color-nav">
-            <a class="navbar-brand text-white" href="#">Ecommerce</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Admin panel
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Productos</a></li>
-                            <li><a class="dropdown-item" href="#">Usuarios</a></li>
+    <!-- aca coloco el navbar -->
+    <?php
 
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Contacto</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            User name
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    // para la ruta fija de el navbar
+    // define('BASE_URL', '/ecommerce');
+    require_once __DIR__ . '/../config/config.php'; // sube dos niveles
+    require_once BASE_PATH . '/view/navbar.php';
+
+    ?>
+
 
     <!-- contenido y tarjetas para los productos, aca ciclo el bucle de los productos -->
     <div class="bg-info">
         <h2 class="text-center">productos recientes</h2>
 
-        <div class="row">
+        <div class="row m-0">
 
             <!-- para empezar a recorrer llamo a la bd -->
 
@@ -63,6 +40,7 @@
                 FROM productos";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
+                $ruta_relativa = '../resources/static/';
 
                 // aca la variable para ir guardando los campos de BD y acceder a ellos luego
                 while ($producto = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -74,7 +52,7 @@
                     $url_img = $producto['imagen'];
             ?>
                     <div class="card" style="width: 18rem;">
-                        <img src="../resources/static/bix.jpg" class="card-img-top img-fluid" alt="...">
+                        <img src="<?= $ruta_relativa . $url_img ?>" class="card-img-top img-fluid" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?= $nombre_producto ?></h5>
                             <p class="card-text"><?= $descripcion_producto . '.' ?></p>

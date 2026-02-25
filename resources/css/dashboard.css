@@ -1,9 +1,0 @@
-:root {
-  --color-primario: #3e72ff;
-  --fuente-principal: 'Arial', sans-serif;
-  --espaciado-base: 16px;
-}
-
-#color-nav{
-    background-color: var(--color-primario);
-}
