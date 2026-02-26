@@ -13,16 +13,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $reg_precio = trim($_POST["precio"]);
     $reg_stock = trim($_POST["stock"]);
 
-
     // extraigo nombre del archivo
-    $nombre_archivo = basename($_FILES["nombre_imagen"]["name"]);
+    $nombre_imagen = basename($_FILES["nombre_imagen"]["name"]);
+
+
+    // establezco la hora de colombia
+    date_default_timezone_set('America/Bogota');
+    // agarro la hora actual de colombia
+    $horaColombia = date('Y-m-d.H:i');
+
+    $imagen_unica = $horaColombia . '-' . $nombre_imagen;
+
+
 
 
 
     // anido el if vara ver si las variables son null, isset devuelve true o false
     // verifico si las variables no estan vacias
     // cambiar isset por empty, isset solo mira si la variable esta creada, pero empty detecta vacios
-    if (isset($reg_producto) && isset($reg_descripcion) && isset($reg_precio) && isset($reg_stock) && isset($nombre_archivo)) {
+    if (isset($reg_producto) && isset($reg_descripcion) && isset($reg_precio) && isset($reg_stock) && isset($nombre_imagen)) {
 
 
         // try para la consulta de bd
@@ -36,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(":producto", $reg_producto);
             $stmt->bindParam(":precio", $reg_precio);
             $stmt->bindParam(":stock", $reg_stock);
-            $stmt->bindParam(":imagen", $nombre_archivo);
+            $stmt->bindParam(":imagen", $imagen_unica);
             $stmt->bindParam(":descripcion", $reg_descripcion);
             $stmt->execute();
 
@@ -44,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
             //uno la ruta para guardarlo en disco
-            $ruta_final = $directorio . '/' . $nombre_archivo;
+            $ruta_final = $directorio . '/' . $imagen_unica;
 
 
             // verifico que la carpeta exista antes de insertar, sino digo que se cree y doy permisos.
