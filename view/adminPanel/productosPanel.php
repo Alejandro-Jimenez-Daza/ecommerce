@@ -75,10 +75,14 @@
                                 <!-- Botones de accion para editar y eliminar, pasar el id Para procesar -->
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
-                                        <a href="#" class="btn btn-sm btn-outline-primary action-btn">
+
+                                        <!-- EDITAR -->
+                                        <a href="editarProducto.php?id_editar=<?= $id_prod ?>" class="btn btn-sm btn-outline-primary action-btn">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
 
+
+                                        <!-- ELIMINAR X  -->
                                         <!-- el button no pasa datos con href, debe ser in unput oculto y value. -->
                                         <form action="../../controller/admin/deleteProductController.php" method="post" onsubmit="return confirm('¿Estás seguro de eliminar este registro?');">
                                             <input type="hidden" name="id_borrar" value="<?= $id_prod; ?>">

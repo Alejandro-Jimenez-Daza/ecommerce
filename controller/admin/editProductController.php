@@ -1,9 +1,4 @@
 <?php
-// require detiene el script con un error fatal si falta el archivo, 
-// mientras que include solo lanza una advertencia. Las versiones _once 
-// (require_once/include_once) aseguran que el archivo se cargue una sola vez, evitando 
-// errores de redeclaración de funciones
-
 
 // verifico que el metodo haya sido post
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -12,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once('../../model/conexionBD.php');
 
     // guardo las variables enviadas al formulario y verifico que no esten vacias
-    $delete_id = $_POST["id_borrar"];
+    $edit_id = $_POST["id_editar"];
 
     // anido el if vara ver si las variables son null, isset devuelve true o false
     // verifico si las variables no estan vacias
@@ -20,20 +15,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     if (
-        empty($delete_id)
+        empty($edit_id)
     ) {
-        echo "Hubo un error, no se paso el ID";
+        echo "Hubo un error, no se paso el ID correctamente";
     }
 
     // try para la consulta de bd
     try {
-        $sql = "DELETE FROM productos WHERE id = :id ";
+        $sql = "SELECT nombre_producto, precio, stock, imagen, descripcion FROM productos WHERE id = :id ";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(":id", $delete_id);
+        $stmt->bindParam(":id", $edit_id);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1) {
-            header("Location: ../../view/adminPanel/productosPanel.php");
+            header("Location: ../../view/adminPanel/editarProducto.php");
             exit;
         } else {
             echo "no se elimino nada";
