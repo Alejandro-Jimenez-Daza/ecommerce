@@ -111,7 +111,7 @@ try {
                                     <label class="form-label">Imagen actual del producto:</label><br>
                                     <img src="../../resources/static/<?= $producto['imagen']; ?>"
                                         alt="Imagen actual"
-                                        style="width: 200px; height: auto;"
+                                        style="width: 30%; height: auto;"
                                         class="img-thumbnail mb-4">
 
                                     <input type="file"
