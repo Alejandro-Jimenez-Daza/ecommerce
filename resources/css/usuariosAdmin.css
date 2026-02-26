@@ -1,70 +1,11 @@
-.img-producto {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-}
 
-.table td,
-.table th {
-    vertical-align: middle;
-}
 
-.table {
-    table-layout: fixed;
-}
+    /* Botones acciones */
+    .action-btn {
+        transition: all 0.2s ease;
+    }
 
-.table td:nth-child(6) {
-    width: 120px;
-}
+    .action-btn:hover {
+        transform: translateY(-2px);
+    }
 
-.table td:nth-child(7) {
-    width: 120px;
-}
-
-/* Tabla moderna */
-.custom-table {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.custom-table thead {
-    background-color: #f8f9fa;
-    font-weight: 600;
-}
-
-.custom-table tbody tr {
-    transition: all 0.2s ease;
-}
-
-.custom-table tbody tr:hover {
-    background-color: #f1f5ff;
-    transform: scale(1.005);
-}
-
-/* Imagen uniforme */
-.img-producto {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-}
-
-/* Botones acciones */
-.action-btn {
-    transition: all 0.2s ease;
-}
-
-.action-btn:hover {
-    transform: translateY(-2px);
-}
-
-/* Compactar columnas imagen y acciones */
-.custom-table td:nth-child(6),
-.custom-table th:nth-child(6) {
-    width: 120px;
-}
-
-.custom-table td:nth-child(7),
-.custom-table th:nth-child(7) {
-    width: 130px;
-}
