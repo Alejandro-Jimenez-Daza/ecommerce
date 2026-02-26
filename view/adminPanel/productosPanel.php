@@ -23,7 +23,7 @@
 
         <div class="container-fluid">
 
-            <a href="crudProductos.php">
+            <a href="agreagarProducto.php">
                 <button class="btn btn-info">Agregar producto</button>
             </a>
             <table class="table">
