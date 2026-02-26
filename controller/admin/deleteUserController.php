@@ -25,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Hubo un error, no se paso el ID";
     }
 
-    // try para la consulta de bd
+    // try para la consulta de bd, se realiza un soft delete para conservar datos
     try {
-        $sql = "DELETE FROM usuarios WHERE id = :id ";
+        $sql = "UPDATE usuarios set activo = 0 WHERE id = :id";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(":id", $delete_id);
         $stmt->execute();

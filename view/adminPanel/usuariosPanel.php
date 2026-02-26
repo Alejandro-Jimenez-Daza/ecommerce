@@ -43,7 +43,7 @@
                     require_once '../../model/conexionBD.php';
 
                     try {
-                        $sql = "SELECT * FROM usuarios";
+                        $sql = "SELECT * FROM usuarios WHERE activo = 1";
                         $stmt = $pdo->prepare($sql);
                         $stmt->execute();
 
