@@ -7,8 +7,6 @@
     <title>Gestion de productos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="../../resources/css/productosAdmin.css">
-    <!-- Iconos de bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -24,12 +22,12 @@
         <div class="container-fluid">
 
             <a href="agreagarProducto.php">
-                <button class="btn btn-info my-5">Agregar producto</button>
+                <button class="btn btn-success my-5"><i class="bi bi-plus-square"></i> Agregar producto</button>
             </a>
             <table class="table table-hover align-middle text-center custom-table">
-                <thead>
+                <thead class="table-dark">
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">#ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripcion</th>
                         <th scope="col">Precio</th>
@@ -65,13 +63,13 @@
                                 <th scope="row"><?= $id_prod ?></th>
                                 <td scope="row"><?= $nombre_prod ?></td>
                                 <td scope="row"><?= $descripcion_prod ?></td>
-                                <td scope="row"><?= $precio_prod ?></td>
+                                <td scope="row"><?= number_format($precio_prod, 0, ',', '.')  ?> $COP</td>
                                 <td scope="row"><?= $stock_prod ?></td>
                                 <!-- imagen -->
                                 <td>
                                     <img class="img-producto img-thumbnail"
                                         src="<?= $ruta_relativa . $url_img ?>"
-                                        alt="Imagen producto">
+                                        alt="Imagen del producto">
                                 </td>
 
                                 <!-- Botones de accion para editar y eliminar, pasar el id Para procesar -->
@@ -80,9 +78,17 @@
                                         <a href="#" class="btn btn-sm btn-outline-primary action-btn">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <a href="#" class="btn btn-sm btn-outline-danger action-btn">
-                                            <i class="bi bi-trash3"></i>
-                                        </a>
+
+                                        <!-- el button no pasa datos con href, debe ser in unput oculto y value. -->
+                                        <form action="../../controller/admin/deleteProductController.php" method="post" onsubmit="return confirm('¿Estás seguro de eliminar este registro?');">
+                                            <input type="hidden" name="id_borrar" value="<?= $id_prod; ?>">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger action-btn">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        </form>
+
+
+
                                     </div>
                                 </td>
                             </tr>

@@ -17,6 +17,9 @@ require_once __DIR__ . '    /../config/config.php'; // sube dos niveles
     }
 </style>
 
+<!-- icons de bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
     <div class="container-fluid pb-3" id="color-nav">
@@ -31,8 +34,8 @@ require_once __DIR__ . '    /../config/config.php'; // sube dos niveles
                         Admin panel
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/adminPanel/productosPanel.php">Productos</a></li>
-                        <li><a class="dropdown-item" href="#">Usuarios</a></li>
+                        <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/adminPanel/productosPanel.php"><i class="bi bi-box2 me-2"></i> Productos</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-people me-2"></i> Usuarios</a></li>
 
                     </ul>
                 </li>

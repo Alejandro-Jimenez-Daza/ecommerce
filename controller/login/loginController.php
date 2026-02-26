@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
         $stmt->bindParam(":correo", $form_email);
         $stmt->execute();
 
-        // aca la variable para ir guardando los campos de BD y acceder a ellos luego
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // verifico que el usuario exista

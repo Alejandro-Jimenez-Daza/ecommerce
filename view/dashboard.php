@@ -23,7 +23,7 @@
 
 
     <!-- contenido y tarjetas para los productos, aca ciclo el bucle de los productos -->
-    <div class="py-5">
+    <div class=" py-5">
         <div class="container">
             <h2 class="text-center mb-5 text-dark fw-bold">Productos recientes</h2>
 
