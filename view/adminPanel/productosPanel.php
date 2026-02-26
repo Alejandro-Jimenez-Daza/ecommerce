@@ -24,12 +24,10 @@
         <div class="container-fluid">
 
             <a href="agreagarProducto.php">
-                <button class="btn btn-info">Agregar producto</button>
+                <button class="btn btn-info my-5">Agregar producto</button>
             </a>
-            <table class="table">
+            <table class="table table-hover align-middle text-center custom-table">
                 <thead>
-
-
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
@@ -69,15 +67,23 @@
                                 <td scope="row"><?= $descripcion_prod ?></td>
                                 <td scope="row"><?= $precio_prod ?></td>
                                 <td scope="row"><?= $stock_prod ?></td>
-                                <td scope="row"><img class="img-thumbnail" id="img-prod" src="<?= $ruta_relativa . $url_img ?>" alt="Imagen del producto"></td>
+                                <!-- imagen -->
+                                <td>
+                                    <img class="img-producto img-thumbnail"
+                                        src="<?= $ruta_relativa . $url_img ?>"
+                                        alt="Imagen producto">
+                                </td>
+
                                 <!-- Botones de accion para editar y eliminar, pasar el id Para procesar -->
-                                <td scope="row" class="fuente-iconos">
-                                    <a href="">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    <a href="">
-                                        <i class="bi bi-trash3"></i>
-                                    </a>
+                                <td>
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <a href="#" class="btn btn-sm btn-outline-primary action-btn">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-sm btn-outline-danger action-btn">
+                                            <i class="bi bi-trash3"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                     <?php

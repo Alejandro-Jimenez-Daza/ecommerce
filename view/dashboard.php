@@ -23,53 +23,69 @@
 
 
     <!-- contenido y tarjetas para los productos, aca ciclo el bucle de los productos -->
-    <div class="bg-info">
-        <h2 class="text-center">productos recientes</h2>
+    <div class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 text-dark fw-bold">Productos recientes</h2>
 
-        <div class="row m-0">
+            <div class="row g-4">
 
-            <!-- para empezar a recorrer llamo a la bd -->
+                <?php
+                require_once '../model/conexionBD.php';
 
+                try {
+                    $sql = "SELECT nombre_producto, descripcion, precio, imagen FROM productos";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute();
 
-            <?php
-            // aca llamo la conexion a la base de datos que viene desde model/conexionBD.php
-            require_once '../model/conexionBD.php';
+                    $ruta_relativa = '../resources/static/';
 
-            try {
-                $sql = "SELECT nombre_producto, descripcion, precio, imagen
-                FROM productos";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute();
-                $ruta_relativa = '../resources/static/';
+                    while ($producto = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
-                // aca la variable para ir guardando los campos de BD y acceder a ellos luego
-                while ($producto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        $nombre_producto = $producto['nombre_producto'];
+                        $descripcion_producto = $producto['descripcion'];
+                        $precio = $producto['precio'];
+                        $url_img = $producto['imagen'];
+                ?>
 
-                    // guardo en varibales
-                    $nombre_producto = $producto['nombre_producto'];
-                    $descripcion_producto = $producto['descripcion'];
-                    $precio = $producto['precio'];
-                    $url_img = $producto['imagen'];
-            ?>
-                    <div class="card" style="width: 18rem;">
-                        <img src="<?= $ruta_relativa . $url_img ?>" class="card-img-top img-fluid" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $nombre_producto ?></h5>
-                            <p class="card-text"><?= $descripcion_producto . '.' ?></p>
-                            <p>$ <?= $precio ?>COP</p>
-                            <a href="#" class="btn btn-primary">Comprar</a>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="card h-100 shadow-sm border-0">
+
+                                <img src="<?= $ruta_relativa . $url_img ?>"
+                                    class="card-img-top img-fluid p-3"
+                                    style="height:220px; object-fit:contain;"
+                                    alt="Producto">
+
+                                <div class="card-body d-flex flex-column">
+
+                                    <h5 class="card-title"><?= $nombre_producto ?></h5>
+
+                                    <p class="card-text text-muted small flex-grow-1">
+                                        <?= $descripcion_producto ?>
+                                    </p>
+
+                                    <div class="mt-auto">
+                                        <p class="fw-bold fs-5 mb-3">
+                                            $<?= number_format($precio, 0, ',', '.') ?> COP
+                                        </p>
+
+                                        <a href="#" class="btn btn-primary w-100">
+                                            Comprar
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-            <?php
+                <?php
+                    }
+                } catch (PDOException $e) {
+                    echo "Error en la base de datos: " . $e->getMessage();
                 }
-            } catch (PDOException $e) {
-                echo "Error en la base de datos: " . $e->getMessage();
-            }
+                ?>
 
-            ?>
+            </div>
         </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

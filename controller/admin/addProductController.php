@@ -22,10 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // agarro la hora actual de colombia
     $horaColombia = date('Y-m-d.H:i');
 
+    // cambio el nombre de la imagen para que siempre sea unica y no haya problemas con otra imagen del mismo nombre, no 
+    // coloco segundos ya que los productos solo se agrega por administradores
     $imagen_unica = $horaColombia . '-' . $nombre_imagen;
-
-
-
 
 
     // anido el if vara ver si las variables son null, isset devuelve true o false
