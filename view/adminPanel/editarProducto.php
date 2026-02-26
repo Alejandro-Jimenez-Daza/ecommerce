@@ -54,13 +54,15 @@ try {
                                 enctype="multipart/form-data"
                                 method="post">
 
+                                <input type="hidden" name="id" value="<?= $producto['id']; ?>">
+
                                 <!-- Producto -->
                                 <div class="mb-3">
                                     <label class="form-label">Nombre del producto</label>
                                     <input type="text"
                                         name="producto"
                                         class="form-control"
-                                        value="<?= $nombre_producto = trim($producto["nombre_producto"]);
+                                        value="<?= $nombre_producto = $producto["nombre_producto"];
                                                 ?>"
                                         required>
                                 </div>
@@ -72,14 +74,14 @@ try {
                                         name="descripcion"
                                         class="form-control"
                                         rows="3"
-                                        required><?= $descripcion = trim($producto["descripcion"]);
+                                        required><?= $descripcion = $producto["descripcion"];
                                                     ?></textarea>
                                 </div>
 
                                 <!-- Precio -->
                                 <div class="mb-3">
                                     <label class="form-label">Precio (COP)</label>
-                                    <input value="<?= $precio = trim($producto["precio"]);
+                                    <input value="<?= $precio = number_format($producto["precio"], 0, ',', '.');
                                                     ?>"
                                         type="number"
                                         name="precio"
@@ -92,7 +94,7 @@ try {
                                 <!-- Stock -->
                                 <div class="mb-3">
                                     <label class="form-label">Stock</label>
-                                    <input value="<?= $stock = trim($producto["stock"]); ?>"
+                                    <input value="<?= $stock = $producto["stock"]; ?>"
                                         type="number"
                                         name="stock"
                                         class="form-control"
@@ -102,13 +104,18 @@ try {
 
                                 <!-- Imagen -->
                                 <div class="mb-4">
+
+                                    <!-- hidden con imagen actual por si no la cambian -->
+                                    <input type="hidden" value="<?= $producto['imagen']; ?>" name="imagen_actual">
+
                                     <label class="form-label">Imagen actual del producto:</label><br>
-                                    <img src="../../resources/static/<?= $producto['imagen'] ?>"
+                                    <img src="../../resources/static/<?= $producto['imagen']; ?>"
                                         alt="Imagen actual"
                                         style="width: 200px; height: auto;"
                                         class="img-thumbnail mb-4">
+
                                     <input type="file"
-                                        name="nombre_imagen"
+                                        name="imagen_nueva"
                                         class="form-control"
                                         accept="image/*">
                                 </div>
