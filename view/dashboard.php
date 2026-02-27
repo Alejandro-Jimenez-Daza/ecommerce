@@ -1,3 +1,8 @@
+<?php
+// protejo las vistas con sesion
+require_once('../config/auth.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

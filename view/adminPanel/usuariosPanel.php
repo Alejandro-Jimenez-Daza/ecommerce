@@ -1,3 +1,9 @@
+<?php
+require_once __DIR__ . '/../../config/auth.php';
+
+require_once __DIR__ . '/../../config/auth_admin.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +41,7 @@
                             <th class="py-3 fw-semibold">Apellido</th>
                             <th class="py-3 fw-semibold">Rol</th>
                             <th class="py-3 fw-semibold">Correo</th>
-                            <th class="py-3 fw-semibold">Nacimiento</th>
+                            <th class="py-3 fw-semibold">Nacimiento (A-M-D)</th>
                             <th class="py-3 fw-semibold">Sexo</th>
                             <th class="py-3 fw-semibold">Creado</th>
                             <th class="py-3 fw-semibold text-end pe-4">Acciones</th>

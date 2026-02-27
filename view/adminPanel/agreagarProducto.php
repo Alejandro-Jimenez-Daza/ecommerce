@@ -1,5 +1,14 @@
 <?php
+
+
+require_once __DIR__ . '/../../config/auth.php';
+
+require_once __DIR__ . '/../../config/auth_admin.php';
+
+
+
 include __DIR__ . '/../navbar.php';
+
 ?>
 
 <!DOCTYPE html>

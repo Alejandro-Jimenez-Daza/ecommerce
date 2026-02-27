@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
@@ -21,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
     // try para la consulta de bd
     try {
-        $sql = "SELECT correo, contrasena
+        $sql = "SELECT id, nombre, rol, correo, contrasena
                 FROM usuarios
                 WHERE correo = :correo LIMIT 1";
         $stmt = $pdo->prepare($sql);
@@ -35,6 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
             // comparacion de que existe
             if (password_verify($form_password, $usuario["contrasena"])) {
+
+
+                $_SESSION["id"] = $usuario['id'];
+                $_SESSION['nombre'] = $usuario['nombre'];
+                $_SESSION['rol'] = $usuario['rol'];
+
                 header("Location: ../../view/dashboard.php");
                 exit;
             } else {

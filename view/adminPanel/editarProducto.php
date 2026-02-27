@@ -1,4 +1,8 @@
 <?php
+require_once __DIR__ . '/../../config/auth.php';
+
+require_once __DIR__ . '/../../config/auth_admin.php';
+
 
 require_once('../../model/conexionBD.php');
 

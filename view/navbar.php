@@ -33,6 +33,9 @@ require_once __DIR__ . '    /../config/config.php'; // sube dos niveles
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Admin panel
                     </a>
+                    <?php
+
+                    ?>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/adminPanel/productosPanel.php"><i class="bi bi-box2 me-2"></i> Productos</a></li>
                         <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/adminPanel/usuariosPanel.php"><i class="bi bi-people me-2"></i> Usuarios</a></li>

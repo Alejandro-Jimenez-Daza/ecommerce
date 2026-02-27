@@ -1,3 +1,10 @@
+<?php
+require_once __DIR__ . '/../../config/auth.php';
+
+require_once __DIR__ . '/../../config/auth_admin.php';
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
