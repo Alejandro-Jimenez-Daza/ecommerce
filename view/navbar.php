@@ -29,25 +29,27 @@ require_once __DIR__ . '    /../config/config.php'; // sube dos niveles
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Admin panel
-                    </a>
-                    <?php
 
-                    ?>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/adminPanel/productosPanel.php"><i class="bi bi-box2 me-2"></i> Productos</a></li>
-                        <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/adminPanel/usuariosPanel.php"><i class="bi bi-people me-2"></i> Usuarios</a></li>
+                <?php if ($_SESSION['rol'] === 'adm'): ?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin panel
+                        </a>
 
-                    </ul>
-                </li>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/adminPanel/productosPanel.php"><i class="bi bi-box2 me-2"></i> Productos</a></li>
+                            <li><a class="dropdown-item" href="<?= BASE_URL ?>/view/adminPanel/usuariosPanel.php"><i class="bi bi-people me-2"></i> Usuarios</a></li>
+
+                        </ul>
+                    </li>
+                <?php endif; ?>
+
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#">Contacto</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Bienvenido, usuario
+                        Bienvenido, <?= $_SESSION['nombre'] ?>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- BASE URL GENERALMENTE DEVUELVE LA RAIZ DE MI PROYECTO, MAS FACIL PARA PORTABILIDAD Y APUNTAR MEJOR -->
