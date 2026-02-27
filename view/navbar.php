@@ -47,10 +47,11 @@ require_once __DIR__ . '    /../config/config.php'; // sube dos niveles
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        User name
+                        Bienvenido, usuario
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Cerrar sesion</a></li>
+                        <!-- BASE URL GENERALMENTE DEVUELVE LA RAIZ DE MI PROYECTO, MAS FACIL PARA PORTABILIDAD Y APUNTAR MEJOR -->
+                        <li><a class="dropdown-item" href="<?= BASE_URL ?>/controller/login/logOutController.php">Cerrar sesion</a></li>
                     </ul>
                 </li>
             </ul>
