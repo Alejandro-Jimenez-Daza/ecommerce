@@ -4,58 +4,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Crear cuenta</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-
-    <!-- css complementario -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../resources/css/registro.css">
+
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="container-fluid p-0">
+        <div class="row g-0 min-vh-100">
 
-        <div class="row">
-
-            <div class="col-9">
-                <img src="../resources/images/2.svg" alt="" class="img-register">
+            <!-- Panel izquierdo -->
+            <div class="col-md-5 panel-izquierdo d-none d-md-flex">
+                <img src="../resources/images/2.svg" alt="Ilustración registro">
+                <p class="tagline">
+                    Únete a <span>ecommerce</span>
+                    <small>Crea tu cuenta y empieza a comprar hoy.</small>
+                </p>
             </div>
 
-            <div class="col-9">
-                <h1>crear cuenta</h1>
+            <!-- Panel derecho: formulario -->
+            <div class="col-md-7 panel-derecho">
+                <div style="max-width: 480px; margin: 0 auto; width: 100%;">
 
-                <form action="../controller/register/registroController.php" method="post">
+                    <div class="logo-texto">e<span>commerce</span></div>
 
-                    <label for="">nombres</label><br>
-                    <input type="text" name="nombres" required><br>
+                    <h1 class="form-titulo">Crear cuenta</h1>
+                    <p class="form-subtitulo">Completa los datos para registrarte</p>
 
-                    <label for="">apellidos</label><br>
-                    <input type="text" name="apellidos"><br>
+                    <form action="../controller/register/registroController.php" method="post">
 
-                    <label for="">correo electronico</label><br>
-                    <input type="email" name="email" required><br>
+                        <!-- Nombres y apellidos en fila -->
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <label class="form-label-custom">Nombres</label>
+                                <input type="text" class="input-custom" placeholder="Juan" name="nombres" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label-custom">Apellidos</label>
+                                <input type="text" class="input-custom" placeholder="Pérez" name="apellidos">
+                            </div>
+                        </div>
 
-                    <label for="">contrasena</label><br>
-                    <input type="password" name="pass" required><br>
+                        <div class="mb-3">
+                            <label class="form-label-custom">Correo electrónico</label>
+                            <input type="email" class="input-custom" placeholder="ejemplo@gmail.com" name="email" required>
+                        </div>
 
-                    <label for="">Fecha de nacimiento</label><br>
-                    <input type="date" name="f_nacimiento"><br>
+                        <div class="mb-3">
+                            <label class="form-label-custom">Contraseña</label>
+                            <input type="password" class="input-custom" placeholder="••••••••" name="pass" required>
+                        </div>
 
+                        <!-- Fecha y sexo en fila -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-7">
+                                <label class="form-label-custom">Fecha de nacimiento</label>
+                                <input type="date" class="input-custom" name="f_nacimiento">
+                            </div>
+                            <div class="col-5">
+                                <label class="form-label-custom">Sexo</label>
+                                <select name="sexo" class="input-custom" required>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <label for="sexo">Sexo:</label>
-                    <select name="sexo" required>
-                        <option value="M">Masculino</option>
-                        <option value="F">Femenino</option>
-                        <option value="Otro">Otro</option>
-                    </select><br>
+                        <button type="submit" class="btn-registrar">Crear cuenta</button>
 
-                    <button class="btn btn-info" type="submit">Registrarme</button>
+                        <p class="link-login">
+                            ¿Ya tienes cuenta? <a href="../index.php">Inicia sesión</a>
+                        </p>
 
+                    </form>
 
-                </form>
+                </div>
             </div>
-
 
         </div>
     </div>

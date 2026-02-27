@@ -1,95 +1,91 @@
 <?php
-// protejo las vistas con sesion
 require_once('../config/auth.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tienda</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../resources/css/dashboard.css">
+
 </head>
 
 <body>
 
-    <!-- aca coloco el navbar -->
     <?php
-
-    // para la ruta fija de el navbar
-    // define('BASE_URL', '/ecommerce');
-    require_once __DIR__ . '/../config/config.php'; // sube dos niveles
+    require_once __DIR__ . '/../config/config.php';
     require_once BASE_PATH . '/view/navbar.php';
-
     ?>
 
-
-    <!-- contenido y tarjetas para los productos, aca ciclo el bucle de los productos -->
-    <div class=" py-5">
+    <!-- Hero -->
+    <div class="hero-banner">
         <div class="container">
-            <h2 class="text-center mb-5 text-dark fw-bold">Productos recientes</h2>
+            <h1>Los mejores productos<br><span>al mejor precio.</span></h1>
+            <p>Encuentra todo lo que necesitas en un solo lugar.</p>
+        </div>
+    </div>
 
-            <div class="row g-4">
+    <!-- Catálogo -->
+    <div class="container pb-5">
 
-                <?php
-                require_once '../model/conexionBD.php';
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="seccion-titulo mb-0">Productos <span>recientes</span></h2>
+            <span class="text-muted small">Mostrando todos los productos</span>
+        </div>
 
-                try {
-                    $sql = "SELECT nombre_producto, descripcion, precio, imagen FROM productos";
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->execute();
+        <div class="row g-4">
+            <?php
+            require_once '../model/conexionBD.php';
+            try {
+                $sql = "SELECT nombre_producto, descripcion, precio, imagen FROM productos";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+                $ruta_relativa = '../resources/static/';
 
-                    $ruta_relativa = '../resources/static/';
+                while ($producto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $nombre_producto      = $producto['nombre_producto'];
+                    $descripcion_producto = $producto['descripcion'];
+                    $precio               = $producto['precio'];
+                    $url_img              = $producto['imagen'];
+            ?>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card-producto">
 
-                    while ($producto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                            <div class="img-wrapper">
+                                <span class="badge-nuevo">Nuevo</span>
+                                <img src="<?= $ruta_relativa . $url_img ?>" alt="<?= htmlspecialchars($nombre_producto) ?>">
+                            </div>
 
-                        $nombre_producto = $producto['nombre_producto'];
-                        $descripcion_producto = $producto['descripcion'];
-                        $precio = $producto['precio'];
-                        $url_img = $producto['imagen'];
-                ?>
+                            <div class="card-body-custom">
+                                <p class="card-nombre"><?= htmlspecialchars($nombre_producto) ?></p>
+                                <p class="card-descripcion"><?= htmlspecialchars($descripcion_producto) ?></p>
 
-                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                            <div class="card h-100 shadow-sm border-0">
+                                <div class="precio-wrapper">
+                                    <span class="precio-principal">$<?= number_format($precio, 0, ',', '.') ?></span>
+                                    <span class="precio-moneda">COP</span>
+                                </div>
 
-                                <img src="<?= $ruta_relativa . $url_img ?>"
-                                    class="card-img-top img-fluid p-3"
-                                    style="height:220px; object-fit:contain;"
-                                    alt="Producto">
-
-                                <div class="card-body d-flex flex-column">
-
-                                    <h5 class="card-title"><?= $nombre_producto ?></h5>
-
-                                    <p class="card-text text-muted small flex-grow-1">
-                                        <?= $descripcion_producto ?>
-                                    </p>
-
-                                    <div class="mt-auto">
-                                        <p class="fw-bold fs-5 mb-3">
-                                            $<?= number_format($precio, 0, ',', '.') ?> COP
-                                        </p>
-
-                                        <a href="#" class="btn btn-primary w-100">
-                                            Comprar
-                                        </a>
-                                    </div>
-
+                                <div class="acciones">
+                                    <button class="btn-comprar">Comprar</button>
+                                    <button class="btn-carrito" title="Agregar al carrito">
+                                        <i class="bi bi-cart-plus"></i>
+                                    </button>
                                 </div>
                             </div>
+
                         </div>
-
-                <?php
-                    }
-                } catch (PDOException $e) {
-                    echo "Error en la base de datos: " . $e->getMessage();
+                    </div>
+            <?php
                 }
-                ?>
-
-            </div>
+            } catch (PDOException $e) {
+                echo "<p class='text-danger'>Error en la base de datos: " . $e->getMessage() . "</p>";
+            }
+            ?>
         </div>
     </div>
 

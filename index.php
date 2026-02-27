@@ -4,43 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iniciar sesión</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/index.css">
+
 </head>
 
 <body>
 
-    <!-- ESTE DOCUMENTO CONTIENE EL FORMULARIO DE LOGIN A LA PAGINA WEB DE ECOMMERCE. -->
+    <div class="container-fluid p-0">
+        <div class="row g-0 min-vh-100">
 
-    <div class="d-flex justify-content-center align-items-center vh-100" id="contenedor-login">
+            <!-- Panel izquierdo: imagen + branding -->
+            <div class="col-md-6 panel-izquierdo d-none d-md-flex">
+                <img src="resources/images/1.svg" alt="Ilustración de inicio de sesión">
+                <p class="tagline">
+                    Tu tienda, a un click.
+                    <span>Gestiona productos, usuarios y ventas desde un solo lugar.</span>
+                </p>
+            </div>
 
-        <div class="container">
+            <!-- Panel derecho: formulario -->
+            <div class="col-md-6 panel-derecho">
+                <div style="max-width: 400px; margin: 0 auto; width: 100%;">
 
-            <div class="">
+                    <div class="logo-texto">e<span>commerce</span></div>
 
-                <!-- formulario de ingreso de sesion a la plataforma -->
-                <form action="controller/login/loginController.php" method="post">
+                    <h1 class="form-titulo">Bienvenido de nuevo</h1>
+                    <p class="form-subtitulo">Ingresa tus credenciales para continuar</p>
 
-                    <!-- entrada del correo -->
-                    <div id="email">
-                        <label for="">correo electronico</label> <br>
-                        <input type="email" placeholder="ejemplo@gmail.com" name="email" required id="input-login">
-                    </div>
+                    <form action="controller/login/loginController.php" method="post">
 
-                    <!-- entrada de la clave -->
-                    <div id="password">
-                        <label for="" class="mt-3">contrasena</label> <br>
-                        <input type="password" placeholder="●●●●●●●●" name="pass" required id="input-login">
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label-custom">Correo electrónico</label>
+                            <input
+                                type="email"
+                                class="input-custom"
+                                placeholder="ejemplo@gmail.com"
+                                name="email"
+                                required>
+                        </div>
 
-                    <button class="btn btn-success mt-3" type="submit">Entrar</button><br>
+                        <div class="mb-4">
+                            <label class="form-label-custom">Contraseña</label>
+                            <input
+                                type="password"
+                                class="input-custom"
+                                placeholder="••••••••"
+                                name="pass"
+                                required>
+                        </div>
 
-                    <p>NO tienes cuenta? <a href="view/crearCuenta.php">cree una</a></p>
+                        <button type="submit" class="btn-entrar">Entrar</button>
 
+                        <div class="divider">o</div>
 
-                </form>
+                        <p class="link-registro">
+                            ¿No tienes cuenta? <a href="view/crearCuenta.php">Crea una aquí</a>
+                        </p>
 
+                    </form>
+
+                </div>
             </div>
 
         </div>

@@ -1,38 +1,185 @@
-body {
-    background-color: #f8f9fa;
+* {
+    font-family: 'Sora', sans-serif;
 }
 
-/* Contenedor fijo para que todas las imágenes tengan misma altura */
-.contenedor-img {
-    height: 220px;
+body {
+    background-color: #f5f5f5;
+}
+
+/* Hero banner */
+.hero-banner {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 3.5rem 0;
+    margin-bottom: 3rem;
+}
+
+.hero-banner h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-banner h1 span {
+    color: #f97316;
+}
+
+.hero-banner p {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Cards */
+.card-producto {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+}
+
+.card-producto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor imagen */
+.img-wrapper {
+    height: 200px;
+    background-color: #fafafa;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
-    overflow: hidden;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
+    padding: 1.2rem;
+    border-bottom: 1px solid #f5f5f5;
+    position: relative;
 }
 
-/* Imagen completa sin zoom */
-.contenedor-img img {
+.img-wrapper img {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
 }
 
-/* Card uniforme */
-/* .card {
-    border-radius: 12px;
-    transition: transform 0.2s ease;
-} */
-
-.card:hover {
-    transform: translateY(-4px);
+/* Badge "Nuevo" */
+.badge-nuevo {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #f97316;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-/* Texto descripción alineado */
-.descripcion {
-    font-size: 0.9rem;
-    color: #555;
+/* Body de la card */
+.card-body-custom {
+    padding: 1rem 1.2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-nombre {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+    /* truncar en 2 líneas */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-descripcion {
+    font-size: 0.78rem;
+    color: #9ca3af;
+    margin-bottom: 0.8rem;
+    flex-grow: 1;
+    /* truncar en 2 líneas */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Precio llamativo */
+.precio-wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.3rem;
+    margin-bottom: 0.9rem;
+}
+
+.precio-principal {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f97316;
+    line-height: 1;
+}
+
+.precio-moneda {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+/* Botones acción */
+.acciones {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-comprar {
+    flex: 1;
+    background-color: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.55rem 0.8rem;
+    transition: background 0.2s;
+}
+
+.btn-comprar:hover {
+    background-color: #f97316;
+    color: white;
+}
+
+.btn-carrito {
+    background-color: #fff7ed;
+    color: #f97316;
+    border: none;
+    border-radius: 10px;
+    padding: 0.55rem 0.7rem;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-carrito:hover {
+    background-color: #f97316;
+    color: white;
+}
+
+/* Sección título */
+.seccion-titulo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.seccion-titulo span {
+    color: #f97316;
 }
