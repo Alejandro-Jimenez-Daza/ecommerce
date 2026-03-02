@@ -1,4 +1,52 @@
+<?php<?php
+
 <?php
+            require_once '../model/conexionBD.php';
+            try {
+                $sql = "SELECT nombre_producto, descripcion, precio, imagen FROM productos";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute();
+                $ruta_relativa = '../resources/static/';
+
+                while ($producto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $nombre_producto      = $producto['nombre_producto'];
+                    $descripcion_producto = $producto['descripcion'];
+                    $precio               = $producto['precio'];
+                    $url_img              = $producto['imagen'];
+            ?>
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="card-producto">
+
+                            <div class="img-wrapper">
+                                <span class="badge-nuevo">Nuevo</span>
+                                <img src="<?= $ruta_relativa . $url_img ?>" alt="<?= htmlspecialchars($nombre_producto) ?>">
+                            </div>
+
+                            <div class="card-body-custom">
+                                <p class="card-nombre"><?= htmlspecialchars($nombre_producto) ?></p>
+                                <p class="card-descripcion"><?= htmlspecialchars($descripcion_producto) ?></p>
+
+                                <div class="precio-wrapper">
+                                    <span class="precio-principal">$<?= number_format($precio, 0, ',', '.') ?></span>
+                                    <span class="precio-moneda">COP</span>
+                                </div>
+
+                                <div class="acciones">
+                                    <button class="btn-comprar">Comprar</button>
+                                    <button class="btn-carrito" title="Agregar al carrito">
+                                        <i class="bi bi-cart-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+            <?php
+                }
+            } catch (PDOException $e) {
+                echo "<p class='text-danger'>Error en la base de datos: " . $e->getMessage() . "</p>";
+            }
+            ?>
 
 require_once __DIR__ . '/../../config/auth_admin.php';
 

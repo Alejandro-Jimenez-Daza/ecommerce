@@ -183,3 +183,23 @@ body {
 .seccion-titulo span {
     color: #f97316;
 }
+
+/* boton de detalle */
+.btn-detalle {
+    display: block;
+    text-align: center;
+    margin-top: 0.6rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 1.5px solid #f0f0f0;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-detalle:hover {
+    border-color: #f97316;
+    color: #f97316;
+}

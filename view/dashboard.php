@@ -42,12 +42,13 @@ require_once('../config/auth.php');
             <?php
             require_once '../model/conexionBD.php';
             try {
-                $sql = "SELECT nombre_producto, descripcion, precio, imagen FROM productos";
+                $sql = "SELECT id, nombre_producto, descripcion, precio, imagen FROM productos";
                 $stmt = $pdo->prepare($sql);
                 $stmt->execute();
                 $ruta_relativa = '../resources/static/';
 
                 while ($producto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $id_prod              = $producto['id'];
                     $nombre_producto      = $producto['nombre_producto'];
                     $descripcion_producto = $producto['descripcion'];
                     $precio               = $producto['precio'];
@@ -58,15 +59,15 @@ require_once('../config/auth.php');
 
                             <div class="img-wrapper">
                                 <span class="badge-nuevo">Nuevo</span>
-                                <img src="<?= $ruta_relativa . $url_img ?>" alt="<?= htmlspecialchars($nombre_producto) ?>">
+                                <img src="<?= $ruta_relativa . $url_img ?>" alt="<?= htmlspecialchars($nombre_producto); ?>">
                             </div>
 
                             <div class="card-body-custom">
-                                <p class="card-nombre"><?= htmlspecialchars($nombre_producto) ?></p>
-                                <p class="card-descripcion"><?= htmlspecialchars($descripcion_producto) ?></p>
+                                <p class="card-nombre"><?= htmlspecialchars($nombre_producto); ?></p>
+                                <p class="card-descripcion"><?= htmlspecialchars($descripcion_producto); ?></p>
 
                                 <div class="precio-wrapper">
-                                    <span class="precio-principal">$<?= number_format($precio, 0, ',', '.') ?></span>
+                                    <span class="precio-principal">$<?= number_format($precio, 0, ',', '.'); ?></span>
                                     <span class="precio-moneda">COP</span>
                                 </div>
 
@@ -76,6 +77,11 @@ require_once('../config/auth.php');
                                         <i class="bi bi-cart-plus"></i>
                                     </button>
                                 </div>
+
+                                <a href="detalleProducto.php?id_detalle=<?= $id_prod ?>" class="btn-detalle">
+                                    Ver detalle
+                                </a>
+                                <!-- la sintaxis para pasar id por get en una <a></a> es href="controlador.php+?+name+=peco->$variable; " -->
                             </div>
 
                         </div>

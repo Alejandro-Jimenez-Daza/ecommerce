@@ -55,13 +55,20 @@ require_once __DIR__ . '/../config/config.php';
                     </a>
                 </li>
 
+                <!-- Contacto -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-envelope me-1"></i> Contacto
+                    </a>
+                </li>
+
                 <!-- Separador visual en desktop -->
                 <li class="d-none d-lg-block" style="width:1px; height:24px; background:#e5e7eb; margin: 0 4px;"></li>
 
                 <!-- Usuario -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Hola,
 
                         <?= htmlspecialchars($_SESSION['nombre']) ?>
                     </a>

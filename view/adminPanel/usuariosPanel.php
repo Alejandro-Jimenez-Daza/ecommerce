@@ -85,10 +85,10 @@ require_once __DIR__ . '/../../config/auth_admin.php';
                                     <td>
                                         <?php
                                         $badge = match (strtolower($rol_usuario)) {
-                                            'admin'  => 'bg-danger-subtle text-danger',
+                                            'adm'  => 'bg-success-subtle text-success',
                                             'editor' => 'bg-warning-subtle text-warning',
                                             default  => 'bg-primary-subtle text-primary'
-                                        };
+                                        };                      
                                         ?>
                                         <span class="badge rounded-pill <?= $badge ?> fw-medium">
                                             <?= htmlspecialchars($rol_usuario) ?>
