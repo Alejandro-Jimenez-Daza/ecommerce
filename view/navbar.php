@@ -30,7 +30,7 @@ require_once __DIR__ . '/../config/config.php';
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-grid me-1"></i>
-                            Admin
+                            Panel
                             <span class="badge-admin">admin</span>
                         </a>
                         <ul class="dropdown-menu">
