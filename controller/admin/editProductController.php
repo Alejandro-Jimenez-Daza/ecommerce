@@ -10,7 +10,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $edit_id = $_POST["id"];
     $edit_producto = trim($_POST["producto"]);
     $edit_descripcion = trim($_POST["descripcion"]);
-    $edit_precio = trim($_POST["precio"]);
+
+    $edit_precio = trim($_POST["precio"]); #el precio debo formatearlo bien para que no se guarde mal interpretado como decimal y quede incorrecto
+    $edit_precio = str_replace('.', '', $edit_precio);
+    $edit_precio = (int)$edit_precio;
+
     $edit_stock = trim($_POST["stock"]);
     $imagen_actual = $_POST["imagen_actual"];
 

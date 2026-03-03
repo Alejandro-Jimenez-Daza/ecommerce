@@ -9,8 +9,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // guardo las variables enviadas al formulario y verifico que no esten vacias
     $reg_producto = trim($_POST["producto"]);
+
     $reg_descripcion = trim($_POST["descripcion"]);
-    $reg_precio = trim($_POST["precio"]);
+
+    $reg_precio = trim($_POST["precio"]); #el precio debo formatearlo bien para que no se guarde mal interpretado como decimal y quede incorrecto
+    $reg_precio = str_replace('.', '', $reg_precio);
+    $reg_precio = (int)$reg_precio;
+
+
     $reg_stock = trim($_POST["stock"]);
 
     // extraigo nombre del archivo
@@ -78,3 +84,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo 'error del formulario';
 }
+
+
+
+// str_replace para formatear el valor del precio y que no se guarde incompleto
+
+//     Sintaxis: str_replace($busqueda, $reemplazo, $cadena_original).
+//     Sensibilidad: Distingue entre mayúsculas y minúsculas.
+//     Funcionalidad:
+//         Texto único: Reemplaza una palabra por otra (ej. cambiar "hola" por "adiós").
+//         Arrays: Permite buscar varias palabras y reemplazarlas por un array de nuevos textos correspondiente.
+//     Variación: str_ireplace() hace lo mismo pero sin distinguir mayúsculas. 
+
+// Ejemplo:
+// php
+
+// $frase = "Hola Mundo";
+// $nuevaFrase = str_replace("Mundo", "PHP", $frase);
+// // Resultado: "Hola PHP"
