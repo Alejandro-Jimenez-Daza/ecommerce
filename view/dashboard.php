@@ -73,7 +73,9 @@ require_once('../config/auth.php');
 
                                 <div class="acciones">
                                     <button class="btn-comprar">Comprar</button>
-                                    <button class="btn-carrito" title="Agregar al carrito">
+                                    <!-- para agregar la alerta de sweet alert, lo haremos con clase y no id para que el bucle no repita el id
+                                     en caso de funcionar, empleamos Jquery pasa seleccionar con .click -->
+                                    <button class="btn-carrito  btn-agregar-carrito" title="Agregar al carrito">
                                         <i class="bi bi-cart-plus"></i>
                                     </button>
                                 </div>
@@ -96,6 +98,11 @@ require_once('../config/auth.php');
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <!-- js  alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- js del boton carrito -->
+    <script src="../resources/js/dashboard.js"></script>
+
 </body>
 
 </html>

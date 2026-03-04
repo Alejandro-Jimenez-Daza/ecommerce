@@ -88,7 +88,7 @@ require_once __DIR__ . '/../../config/auth_admin.php';
                                             'adm'  => 'bg-success-subtle text-success',
                                             'editor' => 'bg-warning-subtle text-warning',
                                             default  => 'bg-primary-subtle text-primary'
-                                        };                      
+                                        };
                                         ?>
                                         <span class="badge rounded-pill <?= $badge ?> fw-medium">
                                             <?= htmlspecialchars($rol_usuario) ?>
@@ -101,10 +101,9 @@ require_once __DIR__ . '/../../config/auth_admin.php';
                                     <td class="text-muted"><?= $creado_en_usuario ?></td>
 
                                     <td class="text-end pe-4">
-                                        <form action="../../controller/admin/deleteUserController.php" method="post"
-                                            onsubmit="return confirm('¿Estás seguro de eliminar este usuario?');">
+                                        <form action="../../controller/admin/deleteUserController.php" method="post" class="form-eliminar">
                                             <input type="hidden" name="id_borrar" value="<?= $id_usuario ?>">
-                                            <button type="submit" class="btn btn-sm btn-outline-danger action-btn" title="Eliminar">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger action-btn btn-eliminar-usuario" title="Eliminar">
                                                 <i class="bi bi-trash3"></i>
                                             </button>
                                         </form>
@@ -129,7 +128,15 @@ require_once __DIR__ . '/../../config/auth_admin.php';
 
     </div>
 
+    <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <!-- cdn de sweet alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <!-- script sweet alert -->
+    <script src="../../resources/js/usuariosPanel.js"></script>
 </body>
 
 </html>
