@@ -75,7 +75,12 @@ require_once('../config/auth.php');
                                     <button class="btn-comprar">Comprar</button>
                                     <!-- para agregar la alerta de sweet alert, lo haremos con clase y no id para que el bucle no repita el id
                                      en caso de funcionar, empleamos Jquery pasa seleccionar con .click -->
-                                    <button class="btn-carrito  btn-agregar-carrito" title="Agregar al carrito">
+
+                                    <!-- agrego data id y data nombre para pasarle el fetch a js -->
+                                    <button class="btn-carrito  btn-agregar-carrito"
+                                        data-id="<?= $id_prod; ?>"
+                                        data-nombre="<?= htmlspecialchars($nombre_producto); ?>"
+                                        title="Agregar al carrito">
                                         <i class="bi bi-cart-plus"></i>
                                     </button>
                                 </div>
