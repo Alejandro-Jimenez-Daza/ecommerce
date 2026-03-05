@@ -39,7 +39,7 @@ if (!empty($ids)) {
     }
 }
 
-include __DIR__ . '/navbar.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,166 +51,14 @@ include __DIR__ . '/navbar.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Sora', sans-serif;
-        }
+    <link rel="stylesheet" href="../resources/css/miCarrito.css">
 
-        body {
-            background: #f5f5f5;
-        }
-
-        .carrito-titulo {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #1a1a1a;
-        }
-
-        .carrito-titulo span {
-            color: #f97316;
-        }
-
-        .tabla-carrito {
-            background: white;
-            border-radius: 16px;
-            border: 1px solid #f0f0f0;
-            overflow: hidden;
-        }
-
-        .tabla-carrito table {
-            margin: 0;
-        }
-
-        .tabla-carrito thead tr {
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: #9ca3af;
-            background: #fafafa;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .img-carrito {
-            width: 56px;
-            height: 56px;
-            object-fit: contain;
-            border-radius: 8px;
-            border: 1px solid #f0f0f0;
-            background: #fafafa;
-            padding: 4px;
-        }
-
-        .nombre-prod {
-            font-weight: 600;
-            font-size: 0.88rem;
-            color: #1a1a1a;
-        }
-
-        .precio-unit {
-            color: #6b7280;
-            font-size: 0.85rem;
-        }
-
-        .subtotal {
-            font-weight: 700;
-            color: #f97316;
-            font-size: 0.95rem;
-        }
-
-        /* Panel resumen */
-        .resumen-panel {
-            background: white;
-            border-radius: 16px;
-            border: 1px solid #f0f0f0;
-            padding: 1.5rem;
-        }
-
-        .resumen-titulo {
-            font-weight: 700;
-            font-size: 1rem;
-            color: #1a1a1a;
-            margin-bottom: 1rem;
-        }
-
-        .resumen-fila {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.88rem;
-            color: #6b7280;
-            margin-bottom: 0.6rem;
-        }
-
-        .resumen-total {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #1a1a1a;
-            border-top: 1px solid #f0f0f0;
-            padding-top: 0.8rem;
-            margin-top: 0.8rem;
-        }
-
-        .resumen-total span:last-child {
-            color: #f97316;
-        }
-
-        .btn-pagar {
-            background: #1a1a1a;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 0.8rem;
-            width: 100%;
-            font-weight: 600;
-            font-size: 0.9rem;
-            font-family: 'Sora', sans-serif;
-            transition: background 0.2s;
-            margin-top: 1rem;
-        }
-
-        .btn-pagar:hover {
-            background: #f97316;
-            color: white;
-        }
-
-        .btn-seguir {
-            display: block;
-            text-align: center;
-            color: #6b7280;
-            font-size: 0.82rem;
-            text-decoration: none;
-            margin-top: 0.8rem;
-            transition: color 0.2s;
-        }
-
-        .btn-seguir:hover {
-            color: #f97316;
-        }
-
-        /* Estado vacío */
-        .carrito-vacio {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: white;
-            border-radius: 16px;
-            border: 1px solid #f0f0f0;
-        }
-
-        .carrito-vacio i {
-            font-size: 3rem;
-            color: #e5e7eb;
-            margin-bottom: 1rem;
-        }
-
-        .carrito-vacio p {
-            color: #9ca3af;
-            font-size: 0.9rem;
-        }
-    </style>
 </head>
 
 <body>
+    <?php
+    include __DIR__ . '/navbar.php';
+    ?>
 
     <div class="container py-5">
 
@@ -272,17 +120,17 @@ include __DIR__ . '/navbar.php';
                                         <td>
                                             <!-- botones + y - — los conectaremos al back después -->
                                             <div class="d-flex align-items-center gap-2">
-                                                <button class="btn btn-sm btn-outline-secondary px-2 py-0">−</button>
+                                                <button class="btn btn-sm btn-outline-secondary px-2 py-0 btn-cantidad"
+                                                    data-id="<?= $id_prod ?>"
+                                                    data-accion="restar">−</button>
                                                 <span class="fw-semibold"><?= $cantidad ?></span>
-                                                <button class="btn btn-sm btn-outline-secondary px-2 py-0">+</button>
+                                                <button class="btn btn-sm btn-outline-secondary px-2 py-0 btn-cantidad"
+                                                    data-id="<?= $id_prod ?>"
+                                                    data-accion="sumar">+</button>
                                             </div>
                                         </td>
                                         <td class="subtotal">$<?= number_format($subtotal, 0, ',', '.') ?> COP</td>
-                                        <td class="pe-4">
-                                            <button class="btn btn-sm btn-outline-danger" title="Eliminar">
-                                                <i class="bi bi-trash3"></i>
-                                            </button>
-                                        </td>
+
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -321,7 +169,12 @@ include __DIR__ . '/navbar.php';
 
     </div>
 
+    <!-- bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- script de la vista carrito -->
+    <script src="../resources/js/carrito.js"></script>
+
 </body>
 
 </html>

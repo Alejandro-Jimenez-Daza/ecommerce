@@ -4,6 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     require_once __DIR__ . '/../../model/conexionBD.php';
 
     $id = (int) $_POST["id_producto"]; //int evita que lleguen cosas diferentes al id
+    $accion = $_POST["accion"] ?? "agregar"; //sumar o restar
 
     // verificar que el producto existe antes de agregar
 
@@ -21,11 +22,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!isset($_SESSION["carrito"])) {
         $_SESSION["carrito"] = [];
     }
-    // si el producto ya esta suma 1, si no lo agrega
-    if (isset($_SESSION["carrito"][$id])) {
-        $_SESSION["carrito"][$id]++;
-    } else {
-        $_SESSION["carrito"][$id] = 1;
+
+    // 3. switch para las acciones de restar o sumar con los botones que tengo en la vista de miCarrito.php
+    switch ($accion) {
+        case 'sumar':
+            $_SESSION["carrito"][$id] = ($_SESSION["carrito"][$id] ?? 0) + 1;
+            break;
+
+        case 'restar':
+            $_SESSION["carrito"][$id]--;
+            if ($_SESSION["carrito"][$id] <= 0) {
+                unset($_SESSION["carrito"][$id]);
+            }
+            break;
+
+        default: //agregar
+            // si el producto ya esta suma 1, si no lo agrega
+            if (isset($_SESSION["carrito"][$id])) {
+                $_SESSION["carrito"][$id]++;
+            } else {
+                $_SESSION["carrito"][$id] = 1;
+            }
     }
+
     echo json_encode(["ok" => true]);
 }
