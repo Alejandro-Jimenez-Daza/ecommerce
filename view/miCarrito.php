@@ -154,9 +154,16 @@ if (!empty($ids)) {
                             <span>Total</span>
                             <span>$<?= number_format($total, 0, ',', '.') ?> COP</span>
                         </div>
-                        <button class="btn-pagar">
-                            <i class="bi bi-lock me-1"></i> Proceder al pago
-                        </button>
+
+                        <!-- boton de pago, lo cambio por un formulario que envie el controller para los datos -->
+
+                        <form action="../controller/cart/carritoCheckoutController.php" method="post">
+                            <button type="submit" class="btn-pagar">
+                                <i class="bi bi-lock me-1"></i> Proceder al pago
+                            </button>
+                        </form>
+
+
                         <a href="dashboard.php" class="btn-seguir">
                             ← Seguir comprando
                         </a>
