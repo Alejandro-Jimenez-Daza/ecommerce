@@ -188,7 +188,8 @@ body {
 .btn-detalle {
     display: block;
     text-align: center;
-    margin-top: 0.6rem;
+    margin-top: auto;
+    /* ← esto lo ancla siempre al fondo */
     padding: 0.5rem;
     border-radius: 10px;
     border: 1.5px solid #f0f0f0;
@@ -202,4 +203,27 @@ body {
 .btn-detalle:hover {
     border-color: #f97316;
     color: #f97316;
+}
+
+.acciones {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    /* espacio antes del btn-detalle */
+}
+
+.btn-carrito {
+    flex: 1;
+    /* ← ocupa todo el ancho disponible */
+    background-color: #fff7ed;
+    color: #f97316;
+    border: none;
+    border-radius: 10px;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

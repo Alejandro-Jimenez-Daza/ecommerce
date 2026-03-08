@@ -57,7 +57,7 @@ require_once __DIR__ . '/../config/config.php';
 
                 <!-- Contacto -->
                 <li class="nav-item">
-                    <a class="nav-link" href="miCarrito.php">
+                    <a class="nav-link" href="<?= BASE_URL ?>/view/miCarrito.php">
                         <i class="bi bi-cart me-1"></i> Mi carrito
                     </a>
                 </li>
