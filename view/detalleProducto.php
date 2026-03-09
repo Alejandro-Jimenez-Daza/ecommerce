@@ -80,14 +80,11 @@ try {
 
                         <!-- Botones -->
                         <div class="acciones mb-4">
-                            <button class="btn-comprar">
-                                <i class="bi bi-lightning-charge me-1"></i> Comprar ahora
-                            </button>
-                            <button class="btn-carrito btn-agregar-carrito" title="Agregar al carrito"
+                            <button class="btn-comprar btn-carrito btn-agregar-carrito" title="Agregar al carrito"
                                 data-id="<?= $producto['id']; ?>"
                                 data-nombre="<?= htmlspecialchars($producto['nombre_producto']); ?>"
-                                title="Agregar al carrito">
-                                <i class="bi bi-cart-plus"></i>
+                                title="Agregar al carrito">Comprar
+                                <i class="bi bi-cart-plus ms-3"></i>
                             </button>
                         </div>
 
