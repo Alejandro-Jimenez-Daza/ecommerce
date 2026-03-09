@@ -74,8 +74,11 @@ try {
         "back_urls" => [
             "success" => $_ENV["URL_HOST"] . "/ecommerce/view/dashboard.php",
             "failure" => $_ENV["URL_HOST"] . "/ecommerce/view/carritoError.php",
-            "pending" => $_ENV["UEL_HOST"] . "/ecommerce/view/carritoPendiente.php"
+            "pending" => $_ENV["URL_HOST"] . "/ecommerce/view/carritoPendiente.php"
         ],
+
+        // para autoredigir despues de un pago
+        "auto_return" => "approved", // ← esto redirige automáticamente si fue aprobado
 
         "payment_methods" => [
             "installments" => 2
