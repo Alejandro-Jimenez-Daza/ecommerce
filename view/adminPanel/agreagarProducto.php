@@ -29,22 +29,22 @@ include __DIR__ . '/../navbar.php';
 
                             <div class="mb-3">
                                 <label class="form-label">Nombre del producto</label>
-                                <input type="text" name="producto" class="form-control" required>
+                                <input type="text" name="producto" class="form-control" required placeholder="Power Supply">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Descripción</label>
-                                <textarea name="descripcion" class="form-control" rows="3" required></textarea>
+                                <textarea name="descripcion" class="form-control" rows="3" required placeholder="1000W Plus Gold"></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Precio (COP)</label>
-                                <input type="number" name="precio" class="form-control" min="0" step="0.01" required>
+                                <input type="text" name="precio" id="precio" class="form-control" min="0" step="0.01" required placeholder="40.000">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Stock</label>
-                                <input type="number" name="stock" class="form-control" min="0" required>
+                                <input type="number" name="stock" class="form-control" min="0" required placeholder="50">
                             </div>
 
                             <div class="mb-4">
@@ -65,6 +65,8 @@ include __DIR__ . '/../navbar.php';
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- js para formatear la entrada del precio con separador de miles y millones -->
+    <script src="../../resources/js/agregarProducto.js"></script>
 </body>
 
 </html>
