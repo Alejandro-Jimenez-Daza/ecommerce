@@ -91,10 +91,7 @@ body {
     color: #1a1a1a;
     margin-bottom: 0.3rem;
     line-height: 1.3;
-    /* truncar en 2 líneas */
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
@@ -102,20 +99,15 @@ body {
     font-size: 0.78rem;
     color: #9ca3af;
     margin-bottom: 0.8rem;
-    flex-grow: 1;
-    /* truncar en 2 líneas */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
-/* Precio llamativo */
 .precio-wrapper {
     display: flex;
     align-items: flex-end;
     gap: 0.3rem;
     margin-bottom: 0.9rem;
+    height: 2rem;
+    /* ← altura fija para el precio */
 }
 
 .precio-principal {
@@ -209,14 +201,15 @@ body {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 0.5rem;
-    /* espacio antes del btn-detalle */
+    margin-top: auto;
+    /* ← esto ancla las acciones al fondo */
 }
 
 .btn-carrito {
     flex: 1;
     /* ← ocupa todo el ancho disponible */
-    background-color: #fff7ed;
-    color: #f97316;
+    background-color: #000000;
+    color: #ffffff;
     border: none;
     border-radius: 10px;
     padding: 0.55rem 0.7rem;

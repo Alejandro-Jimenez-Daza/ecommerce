@@ -22,7 +22,7 @@ require_once __DIR__ . '/../config/auth.php';
             <i class="bi bi-list fs-4 text-secondary"></i>
         </button>
 
-        
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
 
@@ -50,17 +50,24 @@ require_once __DIR__ . '/../config/auth.php';
                     </li>
                 <?php endif; ?>
 
-                <!-- Contacto -->
+                <!-- Carrito -->
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-envelope me-1"></i> Contacto
+                    <a class="nav-link" href="<?= BASE_URL ?>/view/miCarrito.php">
+                        <i class="bi bi-cart me-1"></i> Mi carrito
                     </a>
                 </li>
 
                 <!-- Contacto -->
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL ?>/view/miCarrito.php">
-                        <i class="bi bi-cart me-1"></i> Mi carrito
+                    <a class="nav-link" href="<?= BASE_URL ?>/view/contacto.php">
+                        <i class="bi bi-envelope me-1"></i> Contacto
+                    </a>
+                </li>
+
+                <!-- Quienes somos -->
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= BASE_URL ?>/view/quienesSomos.php">
+                        <i class="bi bi-info-circle me-1"></i> Sobre nosotros
                     </a>
                 </li>
 

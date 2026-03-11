@@ -63,8 +63,8 @@ require_once('../config/auth.php');
                             </div>
 
                             <div class="card-body-custom">
-                                <p class="card-nombre"><?= htmlspecialchars($nombre_producto); ?></p>
-                                <p class="card-descripcion"><?= htmlspecialchars($descripcion_producto); ?></p>
+                                <p class="card-nombre text-truncate"><?= htmlspecialchars($nombre_producto); ?></p>
+                                <p class="card-descripcion text-truncate"><?= htmlspecialchars($descripcion_producto); ?></p>
 
                                 <div class="precio-wrapper">
                                     <span class="precio-principal">$<?= number_format($precio, 0, ',', '.'); ?></span>
@@ -97,7 +97,7 @@ require_once('../config/auth.php');
         </div>
     </div>
 
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <!-- js  alertas -->
