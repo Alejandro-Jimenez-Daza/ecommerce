@@ -70,10 +70,12 @@ if (!empty($ids)) {
         </div>
 
         <?php if (empty($productos)): ?>
-
             <!-- Carrito vacío -->
             <div class="carrito-vacio">
-                <i class="bi bi-cart-x"></i>
+                <img src="" alt="">
+
+                <img src="../resources/images/3.svg" width="260" height="240" viewBox="0 0 160 140" fill="none" class="mb-4">
+
                 <h5 class="fw-semibold mb-2">Tu carrito está vacío</h5>
                 <p>Agrega productos desde el catálogo para verlos aquí.</p>
                 <a href="dashboard.php" class="btn-pagar d-inline-block" style="width:auto; padding: 0.7rem 2rem;">
