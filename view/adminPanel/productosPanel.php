@@ -1,6 +1,9 @@
 <?php
 
 require_once __DIR__ . '/../../config/auth_admin.php';
+require_once __DIR__ . '/../../controller/paginadorController.php';
+require_once __DIR__ . '/../../controller/paginadorController.php';
+
 
 
 ?>
@@ -50,76 +53,60 @@ require_once __DIR__ . '/../../config/auth_admin.php';
                     </thead>
                     <tbody>
                         <?php
-                        require_once '../../model/conexionBD.php';
-
-                        try {
-                            $sql = "SELECT * FROM productos";
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->execute();
-                            $ruta_relativa = '../../resources/static/';
-
-                            while ($producto = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-                                $id_prod          = $producto['id'];
-                                $nombre_prod      = $producto['nombre_producto'];
-                                $descripcion_prod = $producto['descripcion'];
-                                $precio_prod      = $producto['precio'];
-                                $stock_prod       = $producto['stock'];
-                                $url_img          = $producto['imagen'];
+                        $ruta_relativa = '../../resources/static/';
+                        foreach ($registro as $producto):
+                            $id_prod          = $producto['id'];
+                            $nombre_prod      = $producto['nombre_producto'];
+                            $descripcion_prod = $producto['descripcion'];
+                            $precio_prod      = $producto['precio'];
+                            $stock_prod       = $producto['stock'];
+                            $url_img          = $producto['imagen'];
                         ?>
-                                <tr>
-                                    <td class="ps-4 text-muted"><?= $id_prod ?></td>
+                            <tr>
+                                <td class="ps-4 text-muted"><?= $id_prod ?></td>
 
-                                    <td class="fw-medium"><?= htmlspecialchars($nombre_prod) ?></td>
+                                <td class="fw-medium"><?= htmlspecialchars($nombre_prod) ?></td>
 
-                                    <td class="text-muted" style="max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-                                        title="<?= htmlspecialchars($descripcion_prod) ?>">
-                                        <?= htmlspecialchars($descripcion_prod) ?>
-                                    </td>
+                                <td class="text-muted" style="max-width: 220px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                                    title="<?= htmlspecialchars($descripcion_prod) ?>">
+                                    <?= htmlspecialchars($descripcion_prod) ?>
+                                </td>
 
-                                    <td>
-                                        <span class="badge bg-success-subtle text-success fw-medium rounded-pill">
-                                            $<?= number_format($precio_prod, 0, ',', '.') ?> COP
-                                        </span>
-                                    </td>
+                                <td>
+                                    <span class="badge bg-success-subtle text-success fw-medium rounded-pill">
+                                        $<?= number_format($precio_prod, 0, ',', '.') ?> COP
+                                    </span>
+                                </td>
 
-                                    <td>
-                                        <span class="badge rounded-pill <?= $stock_prod > 0 ? 'bg-primary-subtle text-primary' : 'bg-danger-subtle text-danger' ?> fw-medium">
-                                            <?= $stock_prod ?> uds.
-                                        </span>
-                                    </td>
+                                <td>
+                                    <span class="badge rounded-pill <?= $stock_prod > 0 ? 'bg-primary-subtle text-primary' : 'bg-danger-subtle text-danger' ?> fw-medium">
+                                        <?= $stock_prod ?> uds.
+                                    </span>
+                                </td>
 
-                                    <td>
-                                        <img class="rounded-2 border"
-                                            style="width: 70px; height: 70px; object-fit: contain;"
-                                            src="<?= $ruta_relativa . $url_img ?>"
-                                            alt="Imagen del producto">
-                                    </td>
+                                <td>
+                                    <img class="rounded-2 border"
+                                        style="width: 70px; height: 70px; object-fit: contain;"
+                                        src="<?= $ruta_relativa . $url_img ?>"
+                                        alt="Imagen del producto">
+                                </td>
 
-                                    <td class="text-end pe-4">
-                                        <div class="d-flex justify-content-end gap-2">
-
-                                            <a href="editarProducto.php?id_editar=<?= $id_prod ?>" class="btn btn-sm btn-outline-primary action-btn">
-                                                <i class="bi bi-pencil-square"></i>
-                                            </a>
-
-                                            <form action="../../controller/admin/deleteProductController.php" method="post"
-                                                onsubmit="return confirm('¿Estás seguro de eliminar este registro?');">
-                                                <input type="hidden" name="id_borrar" value="<?= $id_prod ?>">
-                                                <button type="submit" class="btn btn-sm btn-outline-danger action-btn">
-                                                    <i class="bi bi-trash3"></i>
-                                                </button>
-                                            </form>
-
-                                        </div>
-                                    </td>
-                                </tr>
-                        <?php
-                            }
-                        } catch (PDOException $e) {
-                            echo "<tr><td colspan='7' class='text-center text-danger py-4'>Error: " . $e->getMessage() . "</td></tr>";
-                        }
-                        ?>
+                                <td class="text-end pe-4">
+                                    <div class="d-flex justify-content-end gap-2">
+                                        <a href="editarProducto.php?id_editar=<?= $id_prod ?>" class="btn btn-sm btn-outline-primary action-btn">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        <form action="../../controller/admin/deleteProductController.php" method="post"
+                                            onsubmit="return confirm('¿Estás seguro de eliminar este registro?');">
+                                            <input type="hidden" name="id_borrar" value="<?= $id_prod ?>">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger action-btn">
+                                                <i class="bi bi-trash3"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -130,6 +117,47 @@ require_once __DIR__ . '/../../config/auth_admin.php';
                 <span class="text-muted small">Ecommerce Admin &middot; 2025</span>
             </div>
         </div>
+
+        <!-- pagiandor traido desde bootstrap -->
+        <?php if ($totalRegistros >= 1): ?>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+
+                    <!-- Anterior -->
+                    <?php if ($pagina == 1): ?>
+                        <li class="page-item disabled">
+                            <a href="#" class="page-link">Previous</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="page-item">
+                            <a href="productosPanel.php?pagina=<?php echo $pagina - 1; ?>" class="page-link">Previous</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <!-- Números dinámicos -->
+                    <?php for ($i = 1; $i <= $numeroPaginas; $i++): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="productosPanel.php?pagina=<?php echo $i; ?>">
+                                <?php echo $i; ?>
+                            </a>
+                        </li>
+                    <?php endfor; ?>
+
+                    <!-- Siguiente -->
+                    <?php if ($pagina == $numeroPaginas): ?>
+                        <li class="page-item disabled">
+                            <a href="#" class="page-link">Next</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="page-item">
+                            <a href="productosPanel.php?pagina=<?php echo $pagina + 1; ?>" class="page-link">Next</a>
+                        </li>
+                    <?php endif; ?>
+
+                </ul>
+            </nav>
+        <?php endif; ?>
+
 
     </div>
 

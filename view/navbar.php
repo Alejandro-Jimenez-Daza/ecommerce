@@ -22,6 +22,7 @@ require_once __DIR__ . '/../config/auth.php';
             <i class="bi bi-list fs-4 text-secondary"></i>
         </button>
 
+        
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
 
