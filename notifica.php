@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/model/conexionBD.php';
+// descontar stock tras la compra
+require_once __DIR__ . '/controller/cart/stockController.php';
 
 use Dotenv\Dotenv;
 use MercadoPago\Client\Payment\PaymentClient;
@@ -81,12 +83,16 @@ try {
                        VALUES 
                           (:id_orden, :id_producto, :cantidad, :precio_unit)";
 
+
         $stmtDetalle = $pdo->prepare($sqlDetalle);
         $stmtDetalle->bindParam(':id_orden',    $id_orden);
         $stmtDetalle->bindParam(':id_producto', $id_producto);
         $stmtDetalle->bindParam(':cantidad',    $cantidad);
         $stmtDetalle->bindParam(':precio_unit', $precio_unit);
         $stmtDetalle->execute();
+
+        // funcion para restar stock que viene del controlador, la ultima funcion del programa como tal para mi portfolio.
+        restarStock($pdo, $id_producto, $cantidad);
     }
 } catch (Exception $e) {
     error_log("Error notifica.php: " . $e->getMessage());
