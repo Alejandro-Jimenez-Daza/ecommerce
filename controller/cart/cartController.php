@@ -45,5 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
     }
 
-    echo json_encode(["ok" => true]);
+    $totalItems = array_sum($_SESSION["carrito"]);
+    echo json_encode(["ok" => true, "total" => $totalItems]);
 }

@@ -1,5 +1,10 @@
 <?php
 require_once('../config/auth.php');
+// si se viene desde un pago aprobado, vaciar carrito con unset
+if (isset($_GET["status"]) && $_GET["status"] === 'approved') {
+    unset($_SESSION["carrito"]);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -50,13 +50,26 @@ require_once __DIR__ . '/../config/auth.php';
                     </li>
                 <?php endif; ?>
 
-                <!-- Carrito -->
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= BASE_URL ?>/view/miCarrito.php">
-                        <i class="bi bi-cart me-1"></i> Mi carrito
-                    </a>
-                </li>
+                <!-- Carrito con contador de badget para contador de items en el array, leyendo session -->
+                <?php
+                $totalItems = 0;
+                if (isset($_SESSION["carrito"])) {
+                    $totalItems = array_sum($_SESSION["carrito"]);
+                }
+                ?>
 
+                <a class="nav-link" href="<?= BASE_URL ?>/view/miCarrito.php">
+                    <i class="bi bi-cart me-1"></i> Mi carrito
+                    <?php if ($totalItems > 0): ?>
+                        <span id="badge-carrito" class="badge rounded-pill bg-danger ms-1" style="font-size: 0.65rem;">
+                            <?= $totalItems ?>
+                        </span>
+                    <?php else: ?>
+                        <span id="badge-carrito" class="badge rounded-pill bg-danger ms-1" style="font-size: 0.65rem; display: none;">
+                            0
+                        </span>
+                    <?php endif; ?>
+                </a>
                 <!-- Contacto -->
                 <li class="nav-item">
                     <a class="nav-link" href="<?= BASE_URL ?>/view/contacto.php">

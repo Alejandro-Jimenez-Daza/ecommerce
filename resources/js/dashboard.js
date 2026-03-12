@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-
     const botonesCarrito = document.querySelectorAll(".btn-agregar-carrito");
     const botonesCantidad = document.querySelectorAll(".btn-cantidad");
 
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     botonesCarrito.forEach((boton) => {
-        boton.addEventListener("click", function () {   // ❌ tenías dos .addEventListener anidados — solo necesitas uno
+        boton.addEventListener("click", function () {
             const id = this.dataset.id;
             const nombre = this.dataset.nombre;
 
@@ -25,34 +24,36 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: `id_producto=${id}`,
             })
-            .then((res) => res.json())                  // ❌ tenías un punto y coma aquí cortando la cadena
-            .then((data) => {                           // ❌ faltaban paréntesis en (data)
-                if (data.ok) {
-                    Toast.fire({ icon: "success", title: `${nombre} - agregado al carrito` });
-                }
-            });                                         // ❌ tenías })/; — slash y paréntesis de más
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.ok) {
+                        Toast.fire({ icon: "success", title: `${nombre} - agregado al carrito` });
+
+                        // actualizar badge — va aquí dentro, después del Toast
+                        const badge = document.getElementById('badge-carrito');
+                        badge.textContent = data.total;
+                        badge.style.display = 'inline';
+                    }
+                });
         });
     });
 
-
-
-    botonesCantidad.forEach((botonCantidad) =>{
-        botonCantidad.addEventListener("click", function (){
+    botonesCantidad.forEach((botonCantidad) => {
+        botonCantidad.addEventListener("click", function () {
             const id = this.dataset.id;
             const accion = this.dataset.accion;
 
-            fetch("../controller/cart/cartController.php",{
-                method : "POST",
-                headers : {"Content-Type": "application/x-www-form-urlencoded"},
-                body : `id_producto=${id}&accion=${accion}`,
+            fetch("../controller/cart/cartController.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `id_producto=${id}&accion=${accion}`,
             })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.ok) {
-                    location.reload(); //recarga para reflejar el nuevo estado
-                }
-            });
-
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.ok) {
+                        location.reload();
+                    }
+                });
         });
     });
 });
