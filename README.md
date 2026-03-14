@@ -1,7 +1,7 @@
 # Ecommerce PHP
 
-<!-- Agrega aquí una captura de pantalla del proyecto -->
-
+<!-- captura de pantalla del proyecto -->
+https://github.com/Alejandro-Jimenez-Daza/ecommerce/blob/c97941526f327a21969d4af746c31aebb339528a/2-example.png
 
 Tienda en línea desarrollada con PHP puro, Bootstrap 5 y MySQL. Incluye autenticación con roles, carrito de compras con AJAX, integración real con Mercado Pago Checkout Pro y sistema de notificaciones webhook para persistir órdenes en base de datos.
 
