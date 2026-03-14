@@ -45,10 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
                 header("Location: ../../view/dashboard.php");
                 exit;
             } else {
-                echo "contrasena incorrecta";
+                header("Location: ../../index.php?error=contrasena_incorrecta");
+                exit;
             }
         } else {
-            echo "usuario no encontrado";
+            header("Location: ../../index.php?error=usuario_no_encontrado");
+            exit;
         }
     } catch (PDOException $e) {
         echo "Error al registrar: " . $e->getMessage();

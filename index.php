@@ -35,6 +35,26 @@
                     <h1 class="form-titulo">Bienvenido de nuevo</h1>
                     <p class="form-subtitulo">Ingresa tus credenciales para continuar</p>
 
+
+                    <!-- seccion de errores de inicio de sesion -->
+                    <!-- mensaje de error — va aquí, antes del form -->
+                    <?php if (isset($_GET["error"])): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php
+                            if ($_GET["error"] === "contrasena_incorrecta") {
+                                echo "Contraseña incorrecta. Intenta de nuevo.";
+                            }
+                            if ($_GET["error"] === "usuario_no_encontrado") {
+                                echo "No existe una cuenta con ese correo.";
+                            }
+                            if ($_GET["error"] === "campos_vacios") {
+                                echo "Debes llenar los dos campos para ingresar.";
+                            }
+                            ?>
+                        </div>
+                    <?php endif; ?>
+
+
                     <form action="controller/login/loginController.php" method="post">
 
                         <div class="mb-3">
