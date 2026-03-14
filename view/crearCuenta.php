@@ -39,33 +39,33 @@
                         <!-- Nombres y apellidos en fila -->
                         <div class="row g-3 mb-3">
                             <div class="col-6">
-                                <label class="form-label-custom">Nombres</label>
+                                <label class="form-label-custom">Nombres*</label>
                                 <input type="text" class="input-custom" placeholder="Juan" name="nombres" required>
                             </div>
                             <div class="col-6">
-                                <label class="form-label-custom">Apellidos</label>
+                                <label class="form-label-custom">Apellidos*</label>
                                 <input type="text" class="input-custom" placeholder="Pérez" name="apellidos">
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label-custom">Correo electrónico</label>
+                            <label class="form-label-custom">Correo electrónico*</label>
                             <input type="email" class="input-custom" placeholder="ejemplo@gmail.com" name="email" required>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label-custom">Contraseña</label>
+                            <label class="form-label-custom">Contraseña*</label>
                             <input type="password" class="input-custom" placeholder="••••••••" name="pass" required>
                         </div>
 
                         <!-- Fecha y sexo en fila -->
                         <div class="row g-3 mb-4">
                             <div class="col-7">
-                                <label class="form-label-custom">Fecha de nacimiento</label>
-                                <input type="date" class="input-custom" name="f_nacimiento">
+                                <label class="form-label-custom">Fecha de nacimiento*</label>
+                                <input type="date" class="input-custom" name="f_nacimiento" required>
                             </div>
                             <div class="col-5">
-                                <label class="form-label-custom">Sexo</label>
+                                <label class="form-label-custom">Sexo*</label>
                                 <select name="sexo" class="input-custom" required>
                                     <option value="M">Masculino</option>
                                     <option value="F">Femenino</option>
